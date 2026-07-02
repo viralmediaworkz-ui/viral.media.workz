@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viral Media Workz — We Don't Chase Trends, We Create Them</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#08080c;
+    --void-2:#111119;
+    --panel:#15151f;
+    --panel-2:#1c1c2a;
+    --line:#26263a;
+    --text:#f4f3f7;
+    --text-dim:#a6a4b8;
+    --text-faint:#6d6c82;
+    --red:#ff3b5c;
+    --orange:#ff8a3d;
+    --yellow:#ffd23f;
+    --blue:#3d9bff;
+    --grad-viral: conic-gradient(from 200deg, var(--red), var(--orange), var(--yellow), var(--blue), var(--red));
+    --grad-line: linear-gradient(90deg, var(--red), var(--orange), var(--yellow), var(--blue));
+    --radius: 18px;
+    --ease: cubic-bezier(.16,.84,.32,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--void);
+    color:var(--text);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--orange);color:var(--void);}
+
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Unbounded', sans-serif;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:8px;height:8px;border-radius:50%;
+    background:var(--grad-viral);
+    flex-shrink:0;
+  }
+
+  .grad-text{
+    background:var(--grad-line);
+    background-size:200% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:sheen 6s linear infinite;
+  }
+  @keyframes sheen{
+    to{background-position:200% center;}
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    background:rgba(8,8,12,0.7);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s var(--ease), background .3s var(--ease);
+  }
+  header.scrolled{
+    border-bottom:1px solid var(--line);
+    background:rgba(8,8,12,0.92);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 32px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .brand-mark{
+    width:40px;height:40px;
+    flex-shrink:0;
+    animation:spin-slow 14s linear infinite;
+  }
+  @keyframes spin-slow{ to{ transform:rotate(360deg); } }
+  .brand-name{
+    font-family:'Unbounded', sans-serif;
+    font-weight:800;
+    font-size:16.5px;
+    letter-spacing:-0.01em;
+    line-height:1.1;
+  }
+  .brand-name span{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-weight:400;
+    font-size:9.5px;
+    letter-spacing:0.22em;
+    color:var(--text-faint);
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+  .nav-links{
+    display:flex;
+    gap:34px;
+    align-items:center;
+  }
+  .nav-links a{
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--text-dim);
+    position:relative;
+    padding:4px 0;
+    transition:color .25s;
+  }
+  .nav-links a:hover{color:var(--text);}
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:0;
+    height:2px;width:0;
+    background:var(--grad-line);
+    transition:width .3s var(--ease);
+  }
+  .nav-links a:hover::after{width:100%;}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:700;
+    font-size:14px;
+    padding:12px 22px;
+    border-radius:100px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);
+    font-family:'Plus Jakarta Sans',sans-serif;
+  }
+  .btn-primary{
+    background:var(--grad-line);
+    background-size:200% auto;
+    color:#0a0a0f;
+  }
+  .btn-primary:hover{
+    background-position:100% center;
+    box-shadow:0 8px 26px -6px rgba(255,138,61,0.55);
+    transform:translateY(-2px);
+  }
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--line);
+    color:var(--text);
+  }
+  .btn-ghost:hover{
+    border-color:var(--text-faint);
+    transform:translateY(-2px);
+  }
+
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:190px 0 130px;
+    overflow:hidden;
+  }
+  .hero-glow{
+    position:absolute;
+    top:-320px; left:50%;
+    transform:translateX(-50%);
+    width:900px;height:900px;
+    background:var(--grad-viral);
+    filter:blur(140px);
+    opacity:0.16;
+    border-radius:50%;
+    animation:pulse-glow 8s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes pulse-glow{
+    0%,100%{opacity:0.14; transform:translateX(-50%) scale(1);}
+    50%{opacity:0.24; transform:translateX(-50%) scale(1.08);}
+  }
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    text-align:center;
+  }
+  .hero .eyebrow{justify-content:center; margin-bottom:26px;}
+  .hero h1{
+    font-size:clamp(40px, 7vw, 84px);
+    font-weight:800;
+    max-width:920px;
+    margin:0 auto;
+  }
+  .hero h1 .line{
+    display:block;
+    opacity:0;
+    transform:translateY(28px);
+    animation:rise .9s var(--ease) forwards;
+  }
+  .hero h1 .line:nth-child(1){animation-delay:.05s;}
+  .hero h1 .line:nth-child(2){animation-delay:.2s;}
+  @keyframes rise{ to{opacity:1; transform:translateY(0);} }
+
+  .hero-sub{
+    max-width:560px;
+    margin:26px auto 0;
+    color:var(--text-dim);
+    font-size:17px;
+    line-height:1.65;
+    opacity:0;
+    animation:rise .9s var(--ease) forwards;
+    animation-delay:.38s;
+  }
+  .hero-cta{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    margin-top:40px;
+    flex-wrap:wrap;
+    opacity:0;
+    animation:rise .9s var(--ease) forwards;
+    animation-delay:.52s;
+  }
+  .btn-primary.big{padding:16px 30px; font-size:15px;}
+  .btn-ghost.big{padding:16px 30px; font-size:15px;}
+
+  .hero-vortex{
+    margin:86px auto 0;
+    width:180px;height:180px;
+    position:relative;
+    opacity:0;
+    animation:rise 1s var(--ease) forwards;
+    animation-delay:.68s;
+  }
+  .hero-vortex .ring{
+    position:absolute; inset:0;
+    border-radius:50%;
+    background:var(--grad-viral);
+    animation:spin-slow 10s linear infinite;
+  }
+  .hero-vortex .ring.r2{
+    inset:16px;
+    background:var(--void);
+    animation:none;
+  }
+  .hero-vortex .core{
+    position:absolute; inset:16px;
+    border-radius:50%;
+    background:var(--void);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero-vortex svg{width:52px;height:52px;}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+    overflow:hidden;
+    white-space:nowrap;
+    background:var(--void-2);
+  }
+  .marquee-track{
+    display:inline-flex;
+    gap:56px;
+    animation:scroll-x 26s linear infinite;
+  }
+  @keyframes scroll-x{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .marquee-item{
+    display:inline-flex;
+    align-items:center;
+    gap:18px;
+    font-family:'Unbounded', sans-serif;
+    font-size:22px;
+    font-weight:600;
+    color:var(--text-faint);
+  }
+  .marquee-item b{
+    background:var(--grad-line);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .marquee-item .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--text-faint);
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:120px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:64px;
+  }
+  .section-head h2{
+    font-size:clamp(30px,4vw,44px);
+    font-weight:700;
+    margin-top:16px;
+  }
+  .section-head p{
+    color:var(--text-dim);
+    font-size:16px;
+    margin-top:16px;
+    line-height:1.6;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(34px);
+    transition:opacity .8s var(--ease), transform .8s var(--ease);
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .service-card{
+    background:var(--void-2);
+    padding:36px 28px;
+    transition:background .35s var(--ease);
+    position:relative;
+  }
+  .service-card:hover{background:var(--panel-2);}
+  .service-icon{
+    width:44px;height:44px;
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    transition:transform .35s var(--ease), border-color .35s;
+  }
+  .service-card:hover .service-icon{
+    transform:translateY(-4px) rotate(-6deg);
+    border-color:var(--orange);
+  }
+  .service-icon svg{width:22px;height:22px;}
+  .service-card h3{
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .service-card p{
+    font-size:14px;
+    color:var(--text-dim);
+    line-height:1.6;
+  }
+
+  .capability-strip{
+    margin-top:20px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .chip{
+    font-family:'Space Mono', monospace;
+    font-size:12.5px;
+    padding:9px 16px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    color:var(--text-dim);
+    transition:border-color .3s, color .3s, transform .3s;
+  }
+  .chip:hover{
+    border-color:var(--blue);
+    color:var(--text);
+    transform:translateY(-2px);
+  }
+
+  /* ---------- WORK ---------- */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .work-grid-single{
+    grid-template-columns:1fr;
+    max-width:420px;
+  }
+  .work-grid-single .work-art{height:260px;}
+  .work-card{
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    overflow:hidden;
+    background:var(--panel);
+    transition:transform .4s var(--ease), border-color .4s;
+  }
+  .work-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--text-faint);
+  }
+  .work-art{
+    height:220px;
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .work-art svg{width:100%;height:100%;}
+  .work-body{padding:22px 24px 26px;}
+  .work-tag{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--text-faint);
+  }
+  .work-body h3{
+    font-size:17px;
+    font-weight:600;
+    margin-top:10px;
+  }
+  .work-body p{
+    font-size:13.5px;
+    color:var(--text-dim);
+    margin-top:6px;
+  }
+
+  /* ---------- PRICING ---------- */
+  .pricing-wrap{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .price-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:44px 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .price-card::before{
+    content:'';
+    position:absolute;
+    top:0;left:0;right:0;height:4px;
+    background:var(--grad-line);
+  }
+  .badge-offer{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Space Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    background:rgba(255,138,61,0.12);
+    color:var(--orange);
+    padding:7px 14px;
+    border-radius:100px;
+    margin-bottom:22px;
+  }
+  .price-card h3{
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .price-row{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin:22px 0 30px;
+  }
+  .price-old{
+    font-family:'Space Mono', monospace;
+    color:var(--text-faint);
+    text-decoration:line-through;
+    font-size:20px;
+  }
+  .price-new{
+    font-family:'Unbounded', sans-serif;
+    font-size:46px;
+    font-weight:800;
+  }
+  .price-new sup{font-size:16px; font-weight:600; color:var(--text-dim);}
+  .price-list{display:flex; flex-direction:column; gap:14px; margin-bottom:32px;}
+  .price-list li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:14.5px;
+    color:var(--text-dim);
+    list-style:none;
+  }
+  .price-list svg{width:16px;height:16px; flex-shrink:0; color:var(--yellow);}
+
+  .pricing-side .eyebrow{margin-bottom:20px;}
+  .pricing-side h2{
+    font-size:clamp(28px,3.6vw,38px);
+    font-weight:700;
+    margin-bottom:20px;
+  }
+  .pricing-side p{
+    color:var(--text-dim);
+    line-height:1.7;
+    margin-bottom:16px;
+    font-size:15.5px;
+  }
+
+  /* ---------- TRUST ---------- */
+  .trust-band{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--void-2);
+  }
+  .trust-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:28px;
+    padding:44px 0;
+  }
+  .trust-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .trust-icon{
+    width:38px;height:38px;
+    border-radius:10px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .trust-icon svg{width:18px;height:18px;}
+  .trust-item h4{font-size:14px;font-weight:600;}
+  .trust-item span{font-size:12.5px;color:var(--text-faint); font-family:'Space Mono',monospace;}
+
+  /* ---------- PROCESS ---------- */
+  .process-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .process-item{
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:28px;
+    padding:34px 0;
+    border-top:1px solid var(--line);
+    align-items:center;
+  }
+  .process-item:last-child{border-bottom:1px solid var(--line);}
+  .process-num{
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    color:var(--text-faint);
+  }
+  .process-item h3{
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .process-item p{
+    color:var(--text-dim);
+    font-size:14.5px;
+    max-width:520px;
+  }
+  .process-item:hover .process-num{color:var(--orange);}
+
+  /* ---------- CONTACT ---------- */
+  .contact-wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+  }
+  .contact-info h2{
+    font-size:clamp(30px,4vw,44px);
+    font-weight:700;
+    margin-bottom:20px;
+  }
+  .contact-info p{
+    color:var(--text-dim);
+    line-height:1.7;
+    margin-bottom:32px;
+    font-size:16px;
+  }
+  .contact-line{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:18px 0;
+    border-top:1px solid var(--line);
+  }
+  .contact-line:last-child{border-bottom:1px solid var(--line);}
+  .contact-line .ic{
+    width:38px;height:38px;
+    border-radius:10px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .contact-line .ic svg{width:17px;height:17px;}
+  .contact-line a, .contact-line span{font-size:15px;}
+  .contact-line small{display:block; color:var(--text-faint); font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:3px;}
+
+  form{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:36px;
+  }
+  .field{margin-bottom:20px;}
+  .field label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--text-faint);
+    margin-bottom:8px;
+  }
+  .field input, .field textarea, .field select{
+    width:100%;
+    background:var(--void-2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:13px 14px;
+    color:var(--text);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:14.5px;
+    outline:none;
+    transition:border-color .25s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus{
+    border-color:var(--orange);
+  }
+  .field textarea{resize:vertical; min-height:90px;}
+  form .btn-primary{width:100%; justify-content:center; padding:15px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:56px 0 34px;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:40px;
+    padding-bottom:40px;
+  }
+  .footer-brand{max-width:320px;}
+  .footer-brand p{color:var(--text-faint); font-size:13.5px; margin-top:14px; line-height:1.6;}
+  .footer-cols{display:flex; gap:70px; flex-wrap:wrap;}
+  .footer-col h4{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--text-faint);
+    margin-bottom:16px;
+  }
+  .footer-col a{
+    display:block;
+    color:var(--text-dim);
+    font-size:14px;
+    margin-bottom:11px;
+    transition:color .25s;
+  }
+  .footer-col a:hover{color:var(--text);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+    padding-top:26px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;
+    color:var(--text-faint);
+    font-family:'Space Mono', monospace;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .work-grid{grid-template-columns:1fr;}
+    .pricing-wrap{grid-template-columns:1fr;}
+    .contact-wrap{grid-template-columns:1fr;}
+    .footer-top{flex-direction:column;}
+  }
+  /* ---------- FLOATING ACTIONS ---------- */
+  .fab-stack{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    z-index:90;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .fab{
+    width:56px;height:56px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 28px -8px rgba(0,0,0,0.55);
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+    position:relative;
+  }
+  .fab:hover{transform:translateY(-3px) scale(1.05);}
+  .fab svg{width:24px;height:24px;}
+  .fab-call{background:var(--grad-line); background-size:200% auto;}
+  .fab-call svg{stroke:#0a0a0f;}
+  .fab-whatsapp{background:#25d366;}
+  .fab-whatsapp svg{fill:#0a0a0f;}
+  .fab-ping{
+    position:absolute; inset:0;
+    border-radius:50%;
+    background:inherit;
+    opacity:0.6;
+    animation:fab-ping 2.4s ease-out infinite;
+  }
+  @keyframes fab-ping{
+    0%{transform:scale(1); opacity:0.5;}
+    100%{transform:scale(1.7); opacity:0;}
+  }
+  .fab-label{
+    position:absolute;
+    right:66px; top:50%;
+    transform:translateY(-50%);
+    background:var(--panel);
+    border:1px solid var(--line);
+    padding:7px 13px;
+    border-radius:8px;
+    font-size:12.5px;
+    white-space:nowrap;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s;
+  }
+  .fab:hover .fab-label{opacity:1;}
+
+  @media (max-width:720px){
+    .nav-links{
+      position:fixed;
+      top:73px; left:0; right:0;
+      background:var(--void);
+      border-bottom:1px solid var(--line);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:24px 32px 32px;
+      gap:20px;
+      transform:translateY(-130%);
+      transition:transform .4s var(--ease);
+    }
+    .nav-links.open{transform:translateY(0);}
+    .nav-toggle{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:6px;
+    }
+    .nav-toggle span{width:22px; height:2px; background:var(--text);}
+    header .btn-ghost.desk-only, header .btn-primary.desk-only{display:none;}
+    .services-grid{grid-template-columns:1fr;}
+    .trust-inner{flex-direction:column; align-items:flex-start;}
+    section{padding:88px 0;}
+    .hero{padding:150px 0 90px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <nav>
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="lg1" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#ff3b5c"/>
+            <stop offset="35%" stop-color="#ff8a3d"/>
+            <stop offset="65%" stop-color="#ffd23f"/>
+            <stop offset="100%" stop-color="#3d9bff"/>
+          </linearGradient>
+        </defs>
+        <circle cx="20" cy="20" r="19" stroke="url(#lg1)" stroke-width="2"/>
+        <path d="M16 13L28 20L16 27V13Z" fill="url(#lg1)"/>
+      </svg>
+      <div class="brand-name">Viral Media Workz<span>Advertising Agency · Est. 2024</span></div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <a href="tel:+919361441776" class="btn btn-ghost desk-only">Call Us</a>
+      <a href="#contact" class="btn btn-primary desk-only">Get a Strategy Call</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">VIRAL MEDIA WORKZ · TAMIL NADU, INDIA</div>
+    <h1>
+      <span class="line">We don't chase trends.</span>
+      <span class="line grad-text">We create them.</span>
+    </h1>
+    <p class="hero-sub">Content, ads, SEO and growth — built as one ROI-focused engine. We plan, launch and optimise campaigns so your brand shows up everywhere your customers already are.</p>
+    <div class="hero-cta">
+      <a href="tel:+919361441776" class="btn btn-primary big">📞 Call now</a>
+      <a href="https://wa.me/919361441776" class="btn btn-ghost big" target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
+    </div>
+    <div class="hero-vortex">
+      <div class="ring"></div>
+      <div class="ring r2"></div>
+      <div class="core">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M16 13L28 20L16 27V13Z" fill="#f4f3f7"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track" id="marqueeTrack">
+    <span class="marquee-item"><b>Content</b><span class="dot"></span></span>
+    <span class="marquee-item">Ads<span class="dot"></span></span>
+    <span class="marquee-item"><b>SEO</b><span class="dot"></span></span>
+    <span class="marquee-item">Growth<span class="dot"></span></span>
+    <span class="marquee-item"><b>Content</b><span class="dot"></span></span>
+    <span class="marquee-item">Ads<span class="dot"></span></span>
+    <span class="marquee-item"><b>SEO</b><span class="dot"></span></span>
+    <span class="marquee-item">Growth<span class="dot"></span></span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What We Do</div>
+      <h2>Four disciplines. <span class="grad-text">One growth engine.</span></h2>
+      <p>Every service is built to feed the next — content earns attention, ads convert it, SEO compounds it, and growth strategy keeps the whole funnel moving.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#ff3b5c" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 18v3M15 18v3M3 9h18"/></svg></div>
+        <h3>Content</h3>
+        <p>Scroll-stopping posts, reels and creatives built for the feed — designed to be shared, not scrolled past.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.8"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg></div>
+        <h3>Ads</h3>
+        <p>Facebook & Instagram ad management, targeted and tracked with one goal: return on every rupee spent.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#ffd23f" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <h3>SEO</h3>
+        <p>Search visibility that keeps working after the campaign ends — built to compound, not expire.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3d9bff" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8M21 7v6"/></svg></div>
+        <h3>Growth</h3>
+        <p>Full-funnel strategy from first impression to loyal customer — measured against real business outcomes.</p>
+      </div>
+    </div>
+    <div class="capability-strip reveal">
+      <span class="chip">Strategy &amp; Planning</span>
+      <span class="chip">Lead Generation</span>
+      <span class="chip">Brand Awareness</span>
+      <span class="chip">Page Optimisation</span>
+      <span class="chip">Competitor Research</span>
+      <span class="chip">ROI-Focused Strategies</span>
+    </div>
+  </div>
+</section>
+
+<div class="trust-band">
+  <div class="wrap trust-inner reveal">
+    <div class="trust-item">
+      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#ffd23f" stroke-width="1.8"><path d="M12 2l2.9 6.3L21 9l-4.8 4.4L17.5 20 12 16.6 6.5 20l1.3-6.6L3 9l6.1-.7L12 2z"/></svg></div>
+      <div><h4>Registered agency</h4><span>Listed &amp; reviewable on Glassdoor</span></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#ff3b5c" stroke-width="1.8"><circle cx="12" cy="12" r="7"/><path d="M12 8v4l3 2"/></svg></div>
+      <div><h4>ROI-focused</h4><span>Every campaign tied to a number</span></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3d9bff" stroke-width="1.8"><path d="M4 4h16v12H7l-3 3V4z"/></svg></div>
+      <div><h4>Direct communication</h4><span>Call or WhatsApp, no ticket queues</span></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+      <div><h4>Full-stack execution</h4><span>Content to conversion, one team</span></div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">How We Work</div>
+      <h2>From first call to <span class="grad-text">first result.</span></h2>
+    </div>
+    <div class="process-list reveal">
+      <div class="process-item">
+        <div class="process-num">01</div>
+        <div><h3>Discovery call</h3><p>We learn your brand, audience and goals over a call or WhatsApp — no lengthy forms.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">02</div>
+        <div><h3>Strategy &amp; planning</h3><p>A content and ad calendar built around your actual sales cycle, not a generic template.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">03</div>
+        <div><h3>Launch &amp; optimise</h3><p>Campaigns go live, then get tuned weekly against real performance data.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">04</div>
+        <div><h3>Report &amp; grow</h3><p>Clear reporting on what worked, and a plan for scaling the parts that did.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-wrap">
+    <div class="contact-info reveal">
+      <div class="eyebrow">Get In Touch</div>
+      <h2>Let's build your <span class="grad-text">next campaign.</span></h2>
+      <p>Tell us about your brand and we'll come back with a plan — usually within a day.</p>
+      <div class="contact-line">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#3d9bff" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2.1L8 9.7a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z"/></svg></div>
+        <div><small>Call</small><a href="tel:+919361441776">+91 93614 41776</a></div>
+      </div>
+      <div class="contact-line">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg></div>
+        <div><small>Email</small><a href="mailto:support@viralmediaworkz.in">support@viralmediaworkz.in</a></div>
+      </div>
+      <div class="contact-line">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#ff3b5c" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="4"/><circle cx="12" cy="17" r="1"/></svg></div>
+        <div><small>Instagram</small><a href="https://instagram.com/viral_media_workz" target="_blank" rel="noopener">@viral_media_workz</a></div>
+      </div>
+      <div class="contact-line">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#3d9bff" stroke-width="1.8"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+        <div><small>Location</small><span>Coimbatore, Tamil Nadu, India</span></div>
+      </div>
+      <div class="contact-line">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#ffd23f" stroke-width="1.8"><path d="M12 2l2.9 6.3L21 9l-4.8 4.4L17.5 20 12 16.6 6.5 20l1.3-6.6L3 9l6.1-.7L12 2z"/></svg></div>
+        <div><small>Registered on</small><span>Glassdoor — Viral Media Workz</span></div>
+      </div>
+      <div class="contact-line">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <div><small>Founded</small><span>2024</span></div>
+      </div>
+    </div>
+    <form class="reveal" onsubmit="event.preventDefault(); this.querySelector('.btn-primary').textContent='Sent — we\'ll reply soon';">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Your name" required>
+      </div>
+      <div class="field">
+        <label for="phone">Phone or WhatsApp</label>
+        <input id="phone" type="tel" placeholder="+91 00000 00000" required>
+      </div>
+      <div class="field">
+        <label for="service">What do you need?</label>
+        <select id="service">
+          <option>Content</option>
+          <option>Facebook &amp; Instagram Ads</option>
+          <option>SEO</option>
+          <option>Full growth package</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="msg">Tell us about your brand</label>
+        <textarea id="msg" placeholder="A line or two about what you sell and your goal"></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit">Send &amp; get a call back</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <svg class="brand-mark" style="animation:none;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="19" stroke="url(#lg1)" stroke-width="2"/>
+            <path d="M16 13L28 20L16 27V13Z" fill="url(#lg1)"/>
+          </svg>
+          <div class="brand-name">Viral Media Workz<span>Advertising Agency</span></div>
+        </div>
+        <p>We don't chase trends — we create them. Content, ads, SEO and growth for brands ready to be seen.</p>
+        <p style="margin-top:8px;">Coimbatore, Tamil Nadu, India · Est. 2024</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="tel:+919361441776">93614 41776</a>
+          <a href="mailto:support@viralmediaworkz.in">support@viralmediaworkz.in</a>
+          <a href="https://instagram.com/viral_media_workz" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024–2026 Viral Media Workz. All rights reserved.</span>
+      <span>Registered agency · Reviewable on Glassdoor</span>
+    </div>
+  </div>
+</footer>
+
+<div class="fab-stack">
+  <a href="tel:+919361441776" class="fab fab-call" aria-label="Call Viral Media Workz">
+    <span class="fab-ping"></span>
+    <span class="fab-label">Call +91 93614 41776</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2.1L8 9.7a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z"/></svg>
+  </a>
+  <a href="https://wa.me/919361441776" target="_blank" rel="noopener" class="fab fab-whatsapp" aria-label="Chat with Viral Media Workz on WhatsApp">
+    <span class="fab-label">Chat on WhatsApp</span>
+    <svg viewBox="0 0 32 32"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.4.7 4.63 1.9 6.5L4 29l7.7-1.85A11.9 11.9 0 0016.02 27C22.63 27 28 21.62 28 15S22.63 3 16.02 3zm0 21.7a9.6 9.6 0 01-4.9-1.34l-.35-.21-4.06.97 1-3.96-.23-.36A9.6 9.6 0 016.4 15c0-5.3 4.3-9.6 9.62-9.6 5.3 0 9.6 4.3 9.6 9.6s-4.3 9.7-9.6 9.7zm5.24-7.2c-.29-.14-1.7-.84-1.96-.93-.26-.1-.46-.14-.65.14-.2.28-.75.93-.92 1.12-.17.19-.34.21-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.44.13-.58.13-.13.29-.34.43-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.57-.9-2.15-.24-.57-.48-.5-.65-.5h-.56c-.19 0-.5.07-.76.36-.26.29-1 1-1 2.43s1.02 2.82 1.16 3.01c.14.19 2 3.06 4.86 4.29.68.29 1.21.47 1.62.6.68.22 1.3.19 1.79.11.55-.08 1.7-.7 1.94-1.36.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.33z"/></svg>
+  </a>
+</div>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 12);
+  });
+
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // duplicate marquee content for seamless loop safety (already duplicated in markup)
+</script>
+
+</body>
+</html>
